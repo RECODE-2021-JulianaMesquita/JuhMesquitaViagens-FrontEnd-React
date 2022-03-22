@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PackageTravelService from '../services/PackageTravelService';
 import foto1 from '../image/5.jpg';
+import SlideHome from './SlideHome';
 
 class CardPackageTravel extends Component {
     constructor(props) {
@@ -39,7 +40,8 @@ class CardPackageTravel extends Component {
     render() {
         return (
             <div className='container'>
-                {
+                <SlideHome />
+                {                    
                     this.state.packageTravel.map(
                         packageTravel => 
                             <div className="container" key={packageTravel.id}>
