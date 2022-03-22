@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import PackageTravelService from '../services/PackageTravelService';
-import foto1 from '../image/5.jpg';
-import SlideHome from './SlideHome';
+
+import {
+    MDBBtn,
+    MDBCard,
+    MDBCardBody,
+    MDBCardImage,
+    MDBCardTitle,
+    MDBCardText,
+    MDBCol
+  } from 'mdbreact';
 
 class CardPackageTravel extends Component {
     constructor(props) {
@@ -39,30 +47,22 @@ class CardPackageTravel extends Component {
 
     render() {
         return (
-            <div className='container'>
-                <SlideHome />
+            <>
                 {                    
                     this.state.packageTravel.map(
                         packageTravel => 
-                            <div className="container" key={packageTravel.id}>
-                                <div className="row">
-                                    <div className="row row-cols-1 row-cols-md-2 g-4">
-                                        <div className="col">
-                                            <div className="card">
-                                                <img width="150" height="150" src={foto1} alt='logo' className="card-img-top" />
-                                                <div className="card-body">
-                                                    <h5 className="card-title">{packageTravel.title}</h5>
-                                                    <p className="card-text"> Destino : {packageTravel.idAddressDestiny} </p>
-                                                    <h4 className="card-text">  R$ {packageTravel.value}</h4>
-                                                    <button type="button" className="btn btn-info" onClick={() => this.viewPackageTravel(packageTravel.id)}>Detalhes</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <MDBCol style={{ maxWidth: "22rem" }} key={packageTravel.id}>
+                        <MDBCard>
+                            <MDBCardImage className="img-fluid" src="https://github.com/RECODE-2021-JulianaMesquita/JuhMesquitaViagens-FrontEnd-React/blob/main/src/image/1.jpg?raw=true" waves />
+                            <MDBCardBody>
+                            <MDBCardTitle>Titulo : {packageTravel.title}</MDBCardTitle>
+                            <MDBCardText> Destino : {packageTravel.idAddressDestiny} - R$ {packageTravel.value}</MDBCardText>
+                            <MDBBtn className="btn btn-info" onClick={() => this.viewPackageTravel(packageTravel.id)}>Detalhes</MDBBtn>
+                            </MDBCardBody>
+                        </MDBCard>
+                        </MDBCol>                           
                     )}
-            </div>
+            </>
         );
     }
 }

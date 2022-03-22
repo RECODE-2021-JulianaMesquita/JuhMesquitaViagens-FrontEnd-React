@@ -3,23 +3,26 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import ListPackageTravel from './components/ListPackageTravel';
 import CreatePackageTravel from './components/CreatePackageTravel';
-import CardPackageTravel from './components/CardPackageTravel';
+import Home from './components/Home';
+import PackageTravel from './components/PackageTravel';
+import Contact from './components/Contact';
+import Login from './components/Login';
+import Promotions from './components/Promotions';
 
 function App() {
   return (
     <div>
-      <Router>        
-          <Header />  
-          <div className="container">     
+      <Router>
+        <Header />
+        <div className="container">
           <Routes>
-
-            <Route path="/" element={<CardPackageTravel />} />
-            <Route path="/pacotes" element={ListPackageTravel}  />
-            <Route path="/adicionar-pacote" element={CreatePackageTravel} />
-
-
+            <Route path="/" element={<Home />} />
+            <Route path="/contato" element={<Contact />} />
+            <Route path="/entrar" element={<Login />} />
+            <Route path="/pacotes" element={<PackageTravel />} />
+            <Route path="/adicionar-pacote" element={<CreatePackageTravel />} />
+            <Route path="/promocoes" element={<Promotions />} />
           </Routes>
           <Footer />
         </div>
