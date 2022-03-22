@@ -24,4 +24,4 @@ class LegalService {
         return axios.delete(Legal_API_BASE_URL + '/' + legalId);
     }
 }
-export default new LegalService;
+export default new LegalService();

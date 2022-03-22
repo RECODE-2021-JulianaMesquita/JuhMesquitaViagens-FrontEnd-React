@@ -10,14 +10,16 @@ import CardPackageTravel from './components/CardPackageTravel';
 function App() {
   return (
     <div>
-      <Router>
-        <div className="container">
+      <Router>        
           <Header />  
-          <ListPackageTravel />        
+          <div className="container">     
           <Routes>
-            <Route component={<ListPackageTravel />} path="/" exact />
-            <Route component={CardPackageTravel} path="/pacotes" />
-            <Route component={CreatePackageTravel} path="/adicionar-pacote" />
+
+            <Route path="/" element={<CardPackageTravel />} />
+            <Route path="/pacotes" element={ListPackageTravel}  />
+            <Route path="/adicionar-pacote" element={CreatePackageTravel} />
+
+
           </Routes>
           <Footer />
         </div>

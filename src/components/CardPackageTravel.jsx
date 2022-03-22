@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PackageTravelService from '../services/PackageTravelService';
-import foto1 from '../image/6.jpg';
+import foto1 from '../image/5.jpg';
 
 class CardPackageTravel extends Component {
     constructor(props) {
@@ -9,30 +9,30 @@ class CardPackageTravel extends Component {
         this.state = {
             packageTravel: []
         }
-        this.addPackageTravel = this.addPackage.bind(this);
-        this.editPackageTravel = this.editPackage.bind(this);
-        this.deletePackageTravel = this.deletePackage.bind(this);
+        this.addPackageTravel= this.addPackage.bind(this);
+        this.editPackageTravel= this.editPackage.bind(this);
+        this.deletePackageTravel= this.deletePackage.bind(this);
     }
 
-    deletePackage(id) {
-        PackageTravelService.deletePackage(id).then(res => {
-            this.setState({ packageTravel: this.state.packageTravel.filter(packageTravel => packageTravel.id !== id) });
+    deletePackage(id){
+        PackageTravelService.deletePackage(id).then( res => {
+            this.setState({packageTravel: this.state.packageTravel.filter(packageTravel => packageTravel.id !== id)});
         });
     }
-    viewPackage(id) {
+    viewPackage(id){
         this.props.history.push(`/view-package/${id}`);
     }
-    editPackage(id) {
+    editPackage(id){
         this.props.history.push(`/add-package/${id}`);
     }
 
-    componentDidMount() {
+    componentDidMount(){
         PackageTravelService.getPackages().then((res) => {
-            this.setState({ packageTravel: res.data });
+            this.setState({packageTravel: res.data});
         });
     }
 
-    addPackage() {
+    addPackage(){
         this.props.history.push('/add-package/_add');
     }
 
@@ -41,7 +41,7 @@ class CardPackageTravel extends Component {
             <div className='container'>
                 {
                     this.state.packageTravel.map(
-                        packageTravel =>
+                        packageTravel => 
                             <div className="container" key={packageTravel.id}>
                                 <div className="row">
                                     <div className="row row-cols-1 row-cols-md-2 g-4">
