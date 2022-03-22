@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const PACKAGE_API_BASE_URL = "https://juhmesquitaviagens-back-end.herokuapp.com/packageTravel";
+const PACKAGE_API_BASE_URL = axios.create({baseURL:'https://juhmesquitaviagens-back-end.herokuapp.com/packageTravel'});
 
 class packageTravelService {
 

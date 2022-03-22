@@ -1,7 +1,4 @@
-import React, { Component, useState } from 'react';
-import '../styles/filter.css';
-
-//const[isOpen, setIsOpen] = useState(false);
+import React, { Component } from 'react';
 
 class FilterPackage extends Component {
     render() {
