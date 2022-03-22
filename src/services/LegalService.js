@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const Legal_API_BASE_URL = "https://juhmesquitaviagens-back-end.herokuapp.com/legal";
+const Legal_API_BASE_URL = "https://juhmesquitaviagens-back-end.herokuapp.com/legal/";
 
 class LegalService {
 
