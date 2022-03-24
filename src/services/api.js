@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const apiService = axios.create({
+const api = axios.create({
     baseURL: 'https://juhmesquitaviagens-back-end.herokuapp.com/'
 });
 
-export default apiService
+export default api

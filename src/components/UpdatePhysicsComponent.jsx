@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PhysicsService from '../services/PhysicsService';
+import api from '../services/api';
 
 class UpdatePhysicsComponent extends Component {
     constructor(props) {
@@ -28,16 +28,16 @@ class UpdatePhysicsComponent extends Component {
     }
 
     componentDidMount(){
-        PhysicsService.getPhysicsById(this.state.id).then( (res) =>{
+        api.getPhysicsById(this.state.id).then( (res) =>{
             let physics = res.data;
             this.setState({
-                address: legal.address,
-                name: legal.name,
-                email: legal.email,
-                password: legal.password,
-                phone: legal.phone,
-                administrator: legal.administrator,
-                cpf: legal.cpf
+                address: physics.address,
+                name: physics.name,
+                email: physics.email,
+                password: physics.password,
+                phone: physics.phone,
+                administrator: physics.administrator,
+                cpf: physics.cpf
             });
         });
     }
@@ -47,7 +47,7 @@ class UpdatePhysicsComponent extends Component {
         let physics = {address: this.state.address, name: this.state.name, email: this.state.email, password: this.state.password, phone: this.state.phone, administrator: this.state.administrator, cpf: this.state.cpf, packages: this.state.packages};
         console.log('physics => ' + JSON.stringify(physics));
         console.log('id => ' + JSON.stringify(this.state.id));
-        PhysicsService.updatePhysics(physics, this.state.id).then( res => {
+        api.updatePhysics(physics, this.state.id).then( res => {
             this.props.history.push('/physics');
         });
     }

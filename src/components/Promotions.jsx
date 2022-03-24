@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CardPackagePromotion from './CardPackagePromotion';
+import { CardPackagePromotion } from './CardPackagePromotion';
 import FilterPackage from './FilterPackage';
 
 class Promotions extends Component {

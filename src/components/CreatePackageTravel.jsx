@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import PackageTravelService from '../services/PackageTravelService';
-import LegalService from '../services/LegalService';
+import api from '../services/api';
 
 class CreatePackageTravel extends Component {
     constructor(props) {
@@ -42,7 +41,7 @@ class CreatePackageTravel extends Component {
         if (this.state.id === '_add') {
             return
         } else {
-           PackageTravelService.getPackageById(this.state.id).then((res) => {
+           api.getPackageById(this.state.id).then((res) => {
                 let packageTravel = res.data;
                 this.setState({
                     title: packageTravel.title,
@@ -57,7 +56,7 @@ class CreatePackageTravel extends Component {
                 });
             });
         }
-        LegalService.getLegals().then((res) => {
+        api.getLegals().then((res) => {
             this.setState({ legals: res.data});
         });
     }
@@ -67,11 +66,11 @@ class CreatePackageTravel extends Component {
         console.log('package => ' + JSON.stringify(packageTravel));
 
         if (this.state.id === '_add') {
-            PackageTravelService.createPackage(packageTravel).then(res => {
+            api.createPackage(packageTravel).then(res => {
                 this.props.history.push('/packages');
             });
         } else {
-            PackageTravelService.updatePackage(packageTravel, this.state.id).then(res => {
+            api.updatePackage(packageTravel, this.state.id).then(res => {
                 this.props.history.push('/packages');
             });
         }

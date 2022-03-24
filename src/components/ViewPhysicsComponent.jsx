@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PhysicsService from '../services/PhysicsService';
+import api from '../services/api';
 
 class ViewPhysicsComponent extends Component {
     constructor(props) {
@@ -12,7 +12,7 @@ class ViewPhysicsComponent extends Component {
     }
 
     componentDidMount(){
-        PhysicsService.getPhysicsById(this.state.id).then( res => {
+        api.getPhysicsById(this.state.id).then( res => {
             this.setState({physics: res.data});
         })
     }

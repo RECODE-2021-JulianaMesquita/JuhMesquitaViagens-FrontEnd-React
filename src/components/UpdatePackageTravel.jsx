@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import PackageTravelService from '../services/PackageTravelService';
-import LegalService from '../services/PackageTravelService';
+import api from '../services/api';
 
 class UpdatePackageTravel extends Component {
     constructor(props) {
@@ -38,7 +37,7 @@ class UpdatePackageTravel extends Component {
     }
 
     componentDidMount(){
-        PackageTravelService.getPackageTravelById(this.state.id).then( (res) =>{
+        api.getPackageTravelById(this.state.id).then( (res) =>{
             let packageTravel = res.data;
             this.setState({
                 title: packageTravel.title,
@@ -53,7 +52,7 @@ class UpdatePackageTravel extends Component {
             });
         });
 
-        LegalService.getLegals().then((res) => {
+        api.getLegals().then((res) => {
             this.setState({ legals: res.data});
         });
     }
@@ -63,7 +62,7 @@ class UpdatePackageTravel extends Component {
         let packageTravel = {ftitle: this.state.title, idAddressDestiny: this.state.idAddressDestiny, idAddressOrigin: this.state.idAddressOrigin,  people: this.state.people , value: this.state.value, dateGoing: this.state.dateGoing, dateReturn: this.state.dateReturn, legal: this.state.legal};
         console.log('packageTravel => ' + JSON.stringify(packageTravel));
         console.log('id => ' + JSON.stringify(this.state.id));
-        PackageTravelService.updatePackageTravel(packageTravel, this.state.id).then( res => {
+        api.updatePackageTravel(packageTravel, this.state.id).then( res => {
             this.props.history.push('/packageTravels');
         });
     }

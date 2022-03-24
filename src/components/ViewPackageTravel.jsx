@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PackageTravelService from '../services/PackageTravelService';
+import api from '../services/api';
 
 class ViewPackageTravel extends Component {
     constructor(props) {
@@ -12,7 +12,7 @@ class ViewPackageTravel extends Component {
     }
 
     componentDidMount() {
-        PackageTravelService.getPackageTravelById(this.state.id).then(res => {
+        api.getPackageTravelById(this.state.id).then(res => {
             this.setState({ packageTravel: res.data });
         })
     }

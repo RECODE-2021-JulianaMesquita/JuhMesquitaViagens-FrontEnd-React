@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AddressService from '../services/AddressService';
+import api from '../services/api';
 
 class CreateAddressComponent extends Component {
     constructor(props) {
@@ -23,7 +23,7 @@ class CreateAddressComponent extends Component {
         if(this.state.id === '_add'){
             return
         }else{
-            AddressService.getAddressById(this.state.id).then( (res) =>{
+            api.getAddressById(this.state.id).then( (res) =>{
                 let address = res.data;
                 this.setState({
                     state: address.state,
@@ -40,11 +40,11 @@ class CreateAddressComponent extends Component {
         console.log('address => ' + JSON.stringify(address));
 
         if(this.state.id === '_add'){
-            AddressService.createAddress(address).then(res =>{
+            api.createAddress(address).then(res =>{
                 this.props.history.push('/address');
             });
         }else{
-            AddressService.updateAddress(address, this.state.id).then( res => {
+            api.updateAddress(address, this.state.id).then( res => {
                 this.props.history.push('/address');
             });
         }

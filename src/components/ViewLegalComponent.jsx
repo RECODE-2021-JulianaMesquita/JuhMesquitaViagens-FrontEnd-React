@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import LegalService from '../services/LegalService';
+import api from '../services/api';
+
 class ViewLegalComponent extends Component {
     constructor(props) {
         super(props)
@@ -11,7 +12,7 @@ class ViewLegalComponent extends Component {
     }
 
     componentDidMount(){
-        LegalService.getLegalById(this.state.id).then( res => {
+        api.getLegalById(this.state.id).then( res => {
             this.setState({legal: res.data});
         })
     }

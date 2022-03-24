@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PackageTravelService from '../services/PackageTravelService';
+import api from '../services/api';
 
 class ListaPackageTravel extends Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class ListaPackageTravel extends Component {
     }
 
     deletePackage(id){
-        PackageTravelService.deletePackage(id).then( res => {
+        api.deletePackage(id).then( res => {
             this.setState({packageTravel: this.state.packageTravel.filter(packageTravel => packageTravel.id !== id)});
         });
     }
@@ -26,7 +26,7 @@ class ListaPackageTravel extends Component {
     }
 
     componentDidMount(){
-        PackageTravelService.getPackages().then((res) => {
+        api.getPackages().then((res) => {
             this.setState({packageTravel: res.data});
         });
     }

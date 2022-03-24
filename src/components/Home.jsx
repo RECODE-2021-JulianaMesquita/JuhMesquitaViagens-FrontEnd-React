@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CardPackageTravel from './CardPackageTravel';
+import { CardPackageTravel} from './CardPackageTravel';
 import SlideHome from './SlideHome';
 
 class Home extends Component {

@@ -7,9 +7,10 @@ import CreatePackageTravel from './components/CreatePackageTravel';
 import Home from './components/Home';
 import PackageTravel from './components/PackageTravel';
 import Contact from './components/Contact';
-import Login from './components/Login';
+import { Login } from './components/Login';
 import Promotions from './components/Promotions';
 import Viewpackage from './components/ViewPackageTravel';
+import { CardPackageTravel} from './components/CardPackageTravel';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/add-package" element={<CreatePackageTravel />} />
             <Route path="/Promotions" element={<Promotions />} />
             <Route path="/PackageTravel/:id" element={<Viewpackage />} />
+            <Route path="CardPackageTravel" element={<CardPackageTravel />} />
           </Routes>
           <Footer />
         </div>

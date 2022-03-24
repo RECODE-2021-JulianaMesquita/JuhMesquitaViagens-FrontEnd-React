@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LegalService from '../services/LegalService';
+import api from '../services/api';
 
 class CreateLegalComponent extends Component {
     constructor(props) {
@@ -28,7 +28,7 @@ class CreateLegalComponent extends Component {
         if(this.state.id === '_add'){
             return
         }else{
-            LegalService.getLegalById(this.state.id).then( (res) =>{
+            api.getLegalById(this.state.id).then( (res) =>{
                 let legal = res.data;
                 this.setState({
                     address: legal.address,
@@ -48,11 +48,11 @@ class CreateLegalComponent extends Component {
         console.log('legal => ' + JSON.stringify(legal));
 
         if(this.state.id === '_add'){
-            LegalService.createLegal(legal).then(res =>{
+            api.createLegal(legal).then(res =>{
                 this.props.history.push('/legals');
             });
         }else{
-            LegalService.updateLegal(legal, this.state.id).then( res => {
+            api.updateLegal(legal, this.state.id).then( res => {
                 this.props.history.push('/legals');
             });
         }

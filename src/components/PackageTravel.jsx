@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CardPackageTravel from './CardPackageTravel';
+import {CardPackageTravel }from './CardPackageTravel';
 import FilterPackage from './FilterPackage';
 
 class PackageTravel extends Component {

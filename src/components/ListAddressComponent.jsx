@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AddressService from '../services/AddressService';
+import api from '../services/api';
 
 class ListAddressComponent extends Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class ListAddressComponent extends Component {
     }
 
     deleteAddress(id){
-        AddressService.deleteAddress(id).then( res => {
+        api.deleteAddress(id).then( res => {
             this.setState({Address: this.state.Address.filter(address => address.id !== id)});
         });
     }
@@ -26,7 +26,7 @@ class ListAddressComponent extends Component {
     }
 
     componentDidMount(){
-        AddressService.getAddresss().then((res) => {
+        api.getAddresss().then((res) => {
             this.setState({ Address: res.data});
         });
     }

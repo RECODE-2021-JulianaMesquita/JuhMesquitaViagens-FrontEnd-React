@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AddressService from '../services/AddressService';
+import api from '../services/api';
 
 class ViewAddressComponent extends Component {
     constructor(props) {
@@ -12,7 +12,7 @@ class ViewAddressComponent extends Component {
     }
 
     componentDidMount(){
-        AddressService.getAddressById(this.state.id).then( res => {
+        api.getAddressById(this.state.id).then( res => {
             this.setState({address: res.data});
         })
     }

@@ -1,7 +1,7 @@
 import { Button } from "bootstrap";
 import React from "react";
 
-const Login = () => {
+export const Login = () => {
   return (
     <div className="container">
       <div className="row">
@@ -35,5 +35,3 @@ const Login = () => {
     </div>
   );
 };
-
-export default Login;

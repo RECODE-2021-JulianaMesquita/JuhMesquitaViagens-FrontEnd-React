@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PhysicsService from '../services/PhysicsService';
+import api from '../services/api';
 
 class ListPhysicsComponent extends Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class ListPhysicsComponent extends Component {
     }
 
     deletePhysics(id){
-        PhysicsService.deletePhysics(id).then( res => {
+        api.deletePhysics(id).then( res => {
             this.setState({physicss: this.state.physicss.filter(physics => physics.id !== id)});
         });
     }
@@ -26,7 +26,7 @@ class ListPhysicsComponent extends Component {
     }
 
     componentDidMount(){
-        PhysicsService.getPhysicss().then((res) => {
+        api.getPhysicss().then((res) => {
             this.setState({ physicss: res.data});
         });
     }

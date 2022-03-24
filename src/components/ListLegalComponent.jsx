@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LegalService from '../services/LegalService';
+import api from '../services/api';
 
 class ListLegalComponent extends Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class ListLegalComponent extends Component {
     }
 
     deleteLegal(id){
-        LegalService.deleteLegal(id).then( res => {
+        api.deleteLegal(id).then( res => {
             this.setState({legals: this.state.legals.filter(legal => legal.id !== id)});
         });
     }
@@ -26,7 +26,7 @@ class ListLegalComponent extends Component {
     }
 
     componentDidMount(){
-        LegalService.getLegals().then((res) => {
+        api.getLegals().then((res) => {
             this.setState({ legals: res.data});
         });
     }

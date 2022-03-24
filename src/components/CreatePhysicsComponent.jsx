@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PhysicsService from '../services/PhysicsService';
+import api from '../services/api';
 
 class CreatePhysicsComponent extends Component {
     constructor(props) {
@@ -31,7 +31,7 @@ class CreatePhysicsComponent extends Component {
         if(this.state.id === '_add'){
             return
         }else{
-            PhysicsService.getPhysicsById(this.state.id).then( (res) =>{
+            api.getPhysicsById(this.state.id).then( (res) =>{
                 let physics = res.data;
                 this.setState({
                     address: physics.address,
@@ -50,11 +50,11 @@ class CreatePhysicsComponent extends Component {
         let physics = {address: this.state.address, name: this.state.name, email: this.state.email, password: this.state.password, phone: this.state.phone, administrator: this.state.administrator, cpf: this.state.cpf, packages: this.state.packages};
         console.log('physics => ' + JSON.stringify(physics));
         if(this.state.id === '_add'){
-            PhysicsService.createPhysics(physics).then(res =>{
+            api.createPhysics(physics).then(res =>{
                 this.props.history.push('/physicss');
             });
         }else{
-            PhysicsService.updatePhysics(physics, this.state.id).then( res => {
+            api.updatePhysics(physics, this.state.id).then( res => {
                 this.props.history.push('/physicss');
             });
         }
