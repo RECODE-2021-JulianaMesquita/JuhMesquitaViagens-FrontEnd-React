@@ -1,70 +1,37 @@
-import React, { Component } from 'react';
-import PackageTravelService from '../services/PackageTravelService';
+import React, { useEffect, useState, Redirect } from 'react';
+import api from '../services/api';
 
-import {
-    MDBBtn,
-    MDBCard,
-    MDBCardBody,
-    MDBCardImage,
-    MDBCardTitle,
-    MDBCardText,
-    MDBCol
-  } from 'mdbreact';
+export const CardPackageTravel = () => {
+    const [packageTravel, setpackageTravel] = useState([])
 
-class CardPackageTravel extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            packageTravel: []
-        }
-        this.addPackageTravel= this.addPackage.bind(this);
-        this.editPackageTravel= this.editPackage.bind(this);
-        this.deletePackageTravel= this.deletePackage.bind(this);
+   const viewPackage = (id) => {
+        return <Redirect to={'/PackageTravel/'+id} />;
     }
 
-    deletePackage(id){
-        PackageTravelService.deletePackage(id).then( res => {
-            this.setState({packageTravel: this.state.packageTravel.filter(packageTravel => packageTravel.id !== id)});
-        });
-    }
-    viewPackage(id){
-        this.props.history.push(`/view-package/${id}`);
-    }
-    editPackage(id){
-        this.props.history.push(`/add-package/${id}`);
-    }
+    useEffect(() => {
+        api.get('/packageTravel').then(response => {
+            setpackageTravel(response.data);
+        })
+    }, []);    
 
-    componentDidMount(){
-        PackageTravelService.getPackages().then((res) => {
-            this.setState({packageTravel: res.data});
-        });
-    }
+    return (
+        <div className='container text-white'>
+            <div className='row'>
+                {packageTravel.map(packageT => (
+                    <div className="col" style={{ maxWidth: "22rem" }} key={packageT.id}>
+                        <div className="card" style={{ backgroundColor: "black" }}>
+                            <img className="img-fluid card-img-top" alt="..." src="https://github.com/RECODE-2021-JulianaMesquita/JuhMesquitaViagens-FrontEnd-React/blob/main/src/image/1.jpg?raw=true" />
+                            <div className="card-body">
+                                <h5 className="card-title">{packageT.titulo}  </h5>
+                                <p className="card-text"> {packageT.idAddressDestiny} </p>
+                                <p className="card-text"> R$ {packageT.value}</p>
+                                <button className="btn btn-info" onClick={() => viewPackage(packageT.id)}>Detalhes</button>                           
+                            </div>
+                        </div>
+                    </div>
+                ))}
 
-    addPackage(){
-        this.props.history.push('/add-package/_add');
-    }
-
-    render() {
-        return (
-            <>
-                {                    
-                    this.state.packageTravel.map(
-                        packageTravel => 
-                        <MDBCol style={{ maxWidth: "22rem" }} key={packageTravel.id}>
-                        <MDBCard>
-                            <MDBCardImage className="img-fluid" src="https://github.com/RECODE-2021-JulianaMesquita/JuhMesquitaViagens-FrontEnd-React/blob/main/src/image/1.jpg?raw=true" waves />
-                            <MDBCardBody>
-                            <MDBCardTitle>Titulo : {packageTravel.title}</MDBCardTitle>
-                            <MDBCardText> Destino : {packageTravel.idAddressDestiny} - R$ {packageTravel.value}</MDBCardText>
-                            <MDBBtn className="btn btn-info" onClick={() => this.viewPackageTravel(packageTravel.id)}>Detalhes</MDBBtn>
-                            </MDBCardBody>
-                        </MDBCard>
-                        </MDBCol>                           
-                    )}
-            </>
-        );
-    }
+            </div>
+        </div>
+    );
 }
-
-export default CardPackageTravel;

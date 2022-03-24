@@ -1,15 +1,15 @@
+import { Button } from "bootstrap";
 import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from "mdbreact";
 
 const Login = () => {
   return (
-    <MDBContainer>
-      <MDBRow>
-        <MDBCol md="6">
+    <div className="container">
+      <div className="row">
+        <div className="col-md-6">
           <form>
             <p className="h5 text-center mb-4">Acessar Conta</p>
             <div className="grey-text">
-              <MDBInput
+              <input
                 label="Type your email"
                 icon="envelope"
                 group
@@ -18,7 +18,7 @@ const Login = () => {
                 error="wrong"
                 success="right"
               />
-              <MDBInput
+              <input
                 label="Type your password"
                 icon="lock"
                 group
@@ -27,12 +27,12 @@ const Login = () => {
               />
             </div>
             <div className="text-center">
-              <MDBBtn>Login</MDBBtn>
+              <Button>Login</Button>
             </div>
           </form>
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
+        </div>
+      </div>
+    </div>
   );
 };
 

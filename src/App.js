@@ -9,6 +9,7 @@ import PackageTravel from './components/PackageTravel';
 import Contact from './components/Contact';
 import Login from './components/Login';
 import Promotions from './components/Promotions';
+import Viewpackage from './components/ViewPackageTravel';
 
 function App() {
   return (
@@ -18,11 +19,12 @@ function App() {
         <div className="container">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/contato" element={<Contact />} />
-            <Route path="/entrar" element={<Login />} />
-            <Route path="/pacotes" element={<PackageTravel />} />
-            <Route path="/adicionar-pacote" element={<CreatePackageTravel />} />
-            <Route path="/promocoes" element={<Promotions />} />
+            <Route path="/Contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/packages" element={<PackageTravel />} />
+            <Route path="/add-package" element={<CreatePackageTravel />} />
+            <Route path="/Promotions" element={<Promotions />} />
+            <Route path="/PackageTravel/:id" element={<Viewpackage />} />
           </Routes>
           <Footer />
         </div>

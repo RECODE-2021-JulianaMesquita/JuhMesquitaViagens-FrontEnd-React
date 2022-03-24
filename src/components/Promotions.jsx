@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CardPackageTravel from './CardPackageTravel';
+import CardPackagePromotion from './CardPackagePromotion';
 import FilterPackage from './FilterPackage';
 
 class Promotions extends Component {
@@ -10,7 +10,7 @@ class Promotions extends Component {
                     <FilterPackage />
                 </div>
                 <div className='row'>
-                    <CardPackageTravel />
+                    <CardPackagePromotion />                    
                 </div>
             </div>
         );
