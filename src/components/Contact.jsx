@@ -1,60 +1,37 @@
-import { Button } from 'bootstrap';
-import React, { Component } from 'react';
+import React from 'react';
 
-class Contact extends Component {
-  render() {
-    return (
-      <div className="container">
+export const Contact = () => {
+  return (
+    <div className="container">
+      <div className="text-center font-weight-bold">
+        <h1>DEIXE NOS UMA MENSAGEM</h1>
+      </div>
+      <form>
         <div className="row">
           <div className="col-md-6">
-            <form>
-              <p className="h5 text-center mb-4">Entre em contato</p>
-              <div className="grey-text">
-                <input
-                  label="Nome"
-                  icon="user"
-                  group
-                  type="text"
-                  validate
-                  error="wrong"
-                  success="right"
-                />
-                <input
-                  label="E-mail"
-                  icon="envelope"
-                  group
-                  type="email"
-                  validate
-                  error="wrong"
-                  success="right"
-                />
-                <input
-                  label="Assunto"
-                  icon="tag"
-                  group
-                  type="text"
-                  validate
-                  error="wrong"
-                  success="right"
-                />
-                <input
-                  type="textarea"
-                  rows="2"
-                  label="Mensagem"
-                  icon="pencil-alt"
-                />
-              </div>
-              <div className="text-center">
-                <Button outline color="secondary">
-                  Enviar
-                </Button>
-              </div>
-            </form>
+            <div className="form-group">
+              <input type="text" name="name" className="form-control" placeholder="Digite seu nome" value="" />
+            </div>
+            <div className="form-group">
+              <input type="text" name="email" className="form-control" placeholder="Digite seu E-mail" value="" />
+            </div>
+            <div className="form-group">
+              <input type="text" name="phone" className="form-control" placeholder="Digite seu número de telefone" value="" />
+            </div>
+          </div>
+          <div className="col-md-6">
+            <div className="form-group">
+              <textarea name="message" className="form-control" placeholder="Mensagem" style={{ width: "100%", height: "115px" }}></textarea>
+            </div>
+          </div>
+          <br /><br /><br /><br /><br />
+          <div className="col-md-12">
+            <div className="form-group">
+              <button className="btn btn-primary btn-lg btn-bloc">Enviar</button>
+            </div>
           </div>
         </div>
-      </div>
-    );
-  }
+      </form>
+    </div>
+  );
 }
-
-export default Contact;

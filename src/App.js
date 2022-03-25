@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import CreatePackageTravel from './components/CreatePackageTravel';
 import Home from './components/Home';
 import PackageTravel from './components/PackageTravel';
-import Contact from './components/Contact';
+import {Contact} from './components/Contact';
 import { Login } from './components/Login';
 import Promotions from './components/Promotions';
 import Viewpackage from './components/ViewPackageTravel';
