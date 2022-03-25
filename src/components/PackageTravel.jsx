@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {CardPackageTravel }from './CardPackageTravel';
 import FilterPackage from './FilterPackage';
 
-class PackageTravel extends Component {
-    render() {
+export const PackageTravel = () => {
         return (
             <div className='container'>
                 <div className='row'>
@@ -14,7 +13,4 @@ class PackageTravel extends Component {
                 </div>
             </div>
         );
-    }
 }
-
-export default PackageTravel;
